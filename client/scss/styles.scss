@@ -1,0 +1,23 @@
+.screen {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  .chain {
+    height: 1vw;
+    width: 25vw;
+    margin-left: auto;
+    margin-right: auto;
+    background: #000;
+    clear: both;
+    
+    .led {
+      background: #000;
+      width: 1vw;
+      height: 1vw;
+      float: left;
+      border: 1px solid #000;
+    }
+  }
+}

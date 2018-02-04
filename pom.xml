@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fi.anttileppa.partyspark</groupId>
+  <artifactId>partyspark</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <name>PartySpark</name>
+  <description>More sparks to a party</description>
+  <url>https://github.com/anttileppa/partyspark</url>
+
+  <licenses>
+    <license>
+      <name>GNU Affero General Public License v3</name>
+      <url>http://www.gnu.org/licenses/agpl-3.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <developers>
+    <developer>
+      <name>Antti Leppä</name>
+    </developer>
+  </developers>
+  
+  <issueManagement>
+    <system>GitHub</system>
+    <url>https://github.com/anttileppa/partyspark/issues</url>
+  </issueManagement>
+
+  <scm>
+    <developerConnection>scm:git:git@github.com:anttileppa/partyspark.git</developerConnection>
+    <url>git@github.com:anttileppa/partyspark.git</url>
+    <connection>scm:git:git@github.com:anttileppa/partyspark.git</connection>
+    <tag>HEAD</tag>
+  </scm>
+
+  <properties>
+    <!-- Project -->
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Maven -->
+
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    
+    <!-- spark  -->
+    
+    <spark.version>2.7.1</spark.version>
+    
+    <!-- Jackson -->
+    
+    <jackson-2.version>2.8.11</jackson-2.version>
+  </properties>
+  
+  <dependencies>
+    <dependency>
+      <groupId>com.sparkjava</groupId>
+      <artifactId>spark-core</artifactId>
+      <version>${spark.version}</version>
+    </dependency> 
+
+    <dependency>
+      <groupId>com.sparkjava</groupId> 
+      <artifactId>spark-template-jade</artifactId>
+      <version>${spark.version}</version>
+    </dependency> 
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson-2.version}</version>
+    </dependency>
+     
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson-2.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.21</version>
+    </dependency>
+    
+  </dependencies>
+  
+</project>

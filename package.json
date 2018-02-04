@@ -1,0 +1,13 @@
+{
+  "name": "partyspark",
+  "description": "Party spark grunt scripts",
+  "version": "1.0.0",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}
