@@ -2,8 +2,6 @@ package fi.anttileppa.partyspark.websocket;
 
 import java.awt.Color;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import fi.anttileppa.partyspark.screen.Pixel;
 import fi.anttileppa.partyspark.screen.ScreenChange;
 import fi.anttileppa.partyspark.screen.ScreenListener;
 
@@ -19,35 +18,27 @@ public class WebSocketScreenListener implements ScreenListener {
   private static Logger logger = LoggerFactory.getLogger(WebSocketScreenListener.class);
 
   @Override
-  public void onChange(Set<ScreenChange> changes) {
+  public void onChange(List<ScreenChange> changes) {
+    ScreenWebSocketSessions.sendMessage(toChanges(changes));
+  }
+
+  private String toChanges(List<ScreenChange> changes) {
+    char[] result = new char[5 * changes.size()];
     
-    try {
-      ScreenWebSocketSessions.sendMessage(new ObjectMapper().writeValueAsString(toChanges(changes)));
-    } catch (JsonProcessingException e) {
-      logger.error("Message serialization failed", e);
+    for (int i = 0, l = changes.size(); i < l; i++) {
+      ScreenChange screenChange = changes.get(i);
+      Pixel pixel = screenChange.getPixel();
+      Color color = pixel.getColor();
+      int i5 = i * 5;
+      
+      result[0 + i5] = (char) pixel.getX();
+      result[1 + i5] = (char) pixel.getY();
+      result[2 + i5] = (char) color.getRed();
+      result[3 + i5] = (char) color.getGreen();
+      result[4 + i5] = (char) color.getBlue();
     }
-  }
 
-  private List<int[]> toChanges(Set<ScreenChange> changes) {
-    return changes.stream()
-      .map(this::toChanges)
-      .collect(Collectors.toList());
-  }
-  
-  private int[] toChanges(ScreenChange change) {
-    return toChanges(change.getPixel().getX(), change.getPixel().getY(), change.getPixel().getColor());
-  }
-
-  private int[] toChanges(int x, int y, Color color) {
-    return toChanges(x, y, color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-  }
-  
-  private int[] toChanges(int x, int y, int r, int g, int b, int a) {
-    if (a < 255) {
-      return new int[] { x, y, r, g, b, a };
-    } else {
-      return new int[] { x, y, r, g, b };
-    }
+    return new String(result);
   }
 
 }

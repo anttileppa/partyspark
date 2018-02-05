@@ -3,8 +3,6 @@ package fi.anttileppa.partyspark.screen;
 import java.awt.Color;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Pixel {
 
   private int x;
@@ -45,13 +43,8 @@ public class Pixel {
     this.color = color;
   }
   
-  @JsonIgnore
   public String toRgb() {
-    if (color.getAlpha() >= 255) {
-      return String.format("rgb(%d, %d, %d)", color.getRed(), color.getGreen(), color.getBlue());
-    }
-    
-    return String.format("rgba(%d, %d, %d, %f)", color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha() / 255f);
+    return String.format("rgb(%d, %d, %d)", color.getRed(), color.getGreen(), color.getBlue());
   }
   
   @Override

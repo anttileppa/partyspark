@@ -1,14 +1,14 @@
 package fi.anttileppa.partyspark.animations;
+
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TimerTask;
 
 import fi.anttileppa.partyspark.screen.Pixel;
 import fi.anttileppa.partyspark.screen.Screen;
 
-public class Chaos extends TimerTask {
-  
+public class Chaos extends Animation {
+
   @Override
   public void run() {
     Set<Pixel> pixels = new HashSet<>();
@@ -18,18 +18,11 @@ public class Chaos extends TimerTask {
         int r = getRandomComponent();
         int g = getRandomComponent();
         int b = getRandomComponent();
-        int a = 255;
-        
-        pixels.add(new Pixel(x, y, new Color(r, g, b, a)));
+        pixels.add(new Pixel(x, y, new Color(r, g, b)));
       }  
     }
     
     Screen.setPixels(pixels);
-  }
-  
-
-  private int getRandomComponent() {
-    return Math.round((float) Math.random() * 255f);
   }
   
 }

@@ -45,7 +45,18 @@ html(lang='en')
       .starter-template
         .row
           .col
-            |Controls
+            h2
+              |Start Animation
+        .row
+          .col
+            a.btn.btn-primary(href="/?animation=chaos")
+              |Chaos
+          .col
+            a.btn.btn-primary(href="/?animation=targetsweep")
+              |Target Sweep
+          .col
+            a.btn.btn-primary(href="/?animation=mordor")
+              |Mordor
         .row
           .col
             .screen
@@ -56,3 +67,6 @@ html(lang='en')
                     .led
                     - led++
                 - chain++
+        .row
+          .col
+            small.time

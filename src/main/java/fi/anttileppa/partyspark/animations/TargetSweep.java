@@ -3,12 +3,11 @@ package fi.anttileppa.partyspark.animations;
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.TimerTask;
 
 import fi.anttileppa.partyspark.screen.Pixel;
 import fi.anttileppa.partyspark.screen.Screen;
 
-public class TargetSweep extends TimerTask {
+public class TargetSweep extends Animation {
   
   private int hy = 0;
   private int hx = 0;

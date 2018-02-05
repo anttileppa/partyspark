@@ -50,9 +50,9 @@ public class Screen {
   }
   
   private static void triggerChangeSet(Set<Pixel> changedPixels) {
-    Set<ScreenChange> changes = changedPixels.stream()
+    List<ScreenChange> changes = changedPixels.stream()
       .map(ScreenChange::new)
-      .collect(Collectors.toSet());
+      .collect(Collectors.toList());
     
     for (ScreenListener listener : listeners) {
       listener.onChange(changes);

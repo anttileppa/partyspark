@@ -1,9 +1,9 @@
 package fi.anttileppa.partyspark.screen;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ScreenListener {
 
-  public void onChange(Set<ScreenChange> changes);
+  public void onChange(List<ScreenChange> changes);
   
 }
